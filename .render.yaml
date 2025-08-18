@@ -1,0 +1,11 @@
+services:
+  - type: static
+    name: achreportv0
+    repo: https://github.com/ayitteyg/achreport.f.git
+    branch: main
+    buildCommand: npm install && npm run build --configuration production
+    publishDir: dist/frontend/browser
+    redirects:
+      - source: /*
+        destination: /index.html
+        statusCode: 200
