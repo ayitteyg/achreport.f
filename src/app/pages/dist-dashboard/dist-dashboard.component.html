@@ -302,9 +302,13 @@
                     <div>
                         <table class="table table-bordered">
                             <tbody>
-
-
-
+                                <tr>
+                                    <td class="text-muted">church</td>
+                                    <td class="text-muted">adult</td>
+                                    <td class="text-muted">youth</td>
+                                    <td class="text-muted">childrn</td>
+                                    <td class="text-muted">total</td>
+                                </tr>
                                 <tr *ngFor="let row of attendanceSummary?.attendance_summary | keyvalue">
                                     <th>{{ row.key }}</th>
                                     <td class="text-muted">{{ $any(row.value).adult }}</td>

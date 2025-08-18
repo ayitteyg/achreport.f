@@ -12,7 +12,7 @@
         box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15) !important;
         padding: 24px !important;
         max-width: 420px !important;
-        z-index: 9000;
+        z-index: 15000;
     }
     .mat-mdc-dialog-title {
         font-size: 1.5rem;
