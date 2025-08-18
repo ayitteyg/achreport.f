@@ -1,0 +1,98 @@
+<div class="form-container">
+    <form [formGroup]="treasuryForm" class="grid55 bg-white rounded-xl shadow frm">
+
+        <!-- Church -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Church</mat-label>
+            <mat-select formControlName="church">
+                <mat-option *ngFor="let c of churchList" [value]="c">{{ c }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- Date -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="treasuryDate" formControlName="date" placeholder="Select date">
+            <mat-datepicker-toggle matSuffix [for]="treasuryDate"></mat-datepicker-toggle>
+            <mat-datepicker #treasuryDate></mat-datepicker>
+        </mat-form-field>
+
+        <!-- Department -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Department</mat-label>
+            <mat-select formControlName="department">
+                <mat-option *ngFor="let dept of departmentList" [value]="dept">{{ dept }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- Returnees -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Returnees</mat-label>
+            <input matInput type="number" formControlName="returnees" placeholder="e.g. 80">
+        </mat-form-field>
+
+        <!-- Tithe -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Tithe (GHS)</mat-label>
+            <input matInput type="number" formControlName="tithe" placeholder="e.g. 3000">
+        </mat-form-field>
+
+        <!-- Combined -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Combined Offering (GHS)</mat-label>
+            <input matInput type="number" formControlName="combined" placeholder="e.g. 500">
+        </mat-form-field>
+
+        <!-- Loose Offering -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Loose Offering (GHS)</mat-label>
+            <input matInput type="number" formControlName="loose" placeholder="e.g. 100">
+        </mat-form-field>
+
+        <!-- Other Receipts -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Other Receipts (GHS)</mat-label>
+            <input matInput type="number" formControlName="other_receipts" placeholder="e.g. 200">
+        </mat-form-field>
+
+        <!-- Payments -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Payments (GHS)</mat-label>
+            <input matInput type="number" formControlName="payments" placeholder="e.g. 1000">
+        </mat-form-field>
+
+        <!-- Submit -->
+        <div class="d-grid mt-4">
+            <button type="submit" class="btn btn-primary btn-lg" [disabled]="treasuryForm.invalid || isSubmitting" data-bs-toggle="modal" data-bs-target="#confirmModal">
+        <span *ngIf="!isSubmitting">
+          <i class="bi bi-save me-2"></i>Save Treasury Record
+        </span>
+        <span *ngIf="isSubmitting">
+          <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+          Saving...
+        </span>
+      </button>
+        </div>
+    </form>
+</div>
+
+<!-- Confirmation Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered custom-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Submission</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to save this treasury record?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" (click)="confirmSubmission()" data-bs-dismiss="modal">
+          <i class="bi bi-check-circle me-1"></i> Yes, Submit
+        </button>
+            </div>
+        </div>
+    </div>
+</div>

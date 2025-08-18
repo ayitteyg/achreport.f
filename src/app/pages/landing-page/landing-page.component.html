@@ -1,0 +1,91 @@
+<!-- Welcome Banner with Profile -->
+
+
+<div class="row content-outer">
+
+    <div class="col-lg-6 col-sm-12 div1">
+
+        <img class="" src="images/rpt1.png" alt="" width="" height="">
+
+    </div>
+
+
+    <div class="col-lg-6 col-sm-12 div2">
+        <h4 class="text-muted">SUBMIT REPORT</h4>
+        <ul class="form-links">
+            <li>
+                <div>
+                    <span>1</span>
+                    <a (click)="toggleForm('activity')">Program & Activity</a>
+                </div>
+                <div class="pt-4 frm1" *ngIf="isFormOpen('activity')">
+                    <app-activity-forms class="frm1"></app-activity-forms>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span>2</span>
+                    <a (click)="toggleForm('baptism')">Baptism</a>
+                </div>
+                <div class="pt-4 frm1" *ngIf="isFormOpen('baptism')">
+                    <app-baptism-form></app-baptism-form>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span>3</span>
+                    <a (click)="toggleForm('transfer')">Transfers</a>
+                </div>
+                <div class="pt-4 frm1" *ngIf="isFormOpen('transfer')">
+                    <app-transfer-form></app-transfer-form>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span>4</span>
+                    <a (click)="toggleForm('attendance')">Service Attendance</a>
+                </div>
+                <div class="pt-4 frm1" *ngIf="isFormOpen('attendance')">
+                    <app-attendance-form></app-attendance-form>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span>5</span>
+                    <a (click)="toggleForm('visitor')">Visitor (Interest-cordinator)</a>
+                </div>
+                <div class="pt-4 frm1" *ngIf="isFormOpen('visitor')">
+                    <app-visitor-form></app-visitor-form>
+                </div>
+            </li>
+            <li>
+
+                <div>
+                    <span>6</span>
+                    <a (click)="toggleForm('dedication')">Baby Dedications</a>
+                </div>
+                <div class="pt-4 frm1" *ngIf="isFormOpen('dedication')">
+                    <app-dedication-form></app-dedication-form>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span>7</span>
+                    <a (click)="toggleForm('event')">Events</a>
+                </div>
+                <div class="pt-4 frm1" *ngIf="isFormOpen('event')">
+                    <app-event-form></app-event-form>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <span>8</span>
+                    <a (click)="toggleForm('treasury')">Treasury</a>
+                </div>
+                <div class="pt-4 frm1" *ngIf="isFormOpen('treasury')">
+                    <app-treasury-form></app-treasury-form>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

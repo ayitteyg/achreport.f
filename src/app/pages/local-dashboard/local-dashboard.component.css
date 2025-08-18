@@ -1,0 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inconsolata:wght@200..900&display=swap');
+* {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* font-family: "Bebas Neue", serif; */
+    font-size: 15px;
+}
+
+.page-outer {
+    /* background-color: #f0f0f0; */
+    width: 90%;
+    margin: auto;
+    padding-left: 50px;
+}
+
+.user-detail {
+    width: 60%;
+    padding: 10px;
+    margin: auto;
+    margin-bottom: 10px;
+}
+
+.btn {
+    width: 200px;
+    padding: 16px;
+}
+
+.title {
+    font-size: 14px;
+    color: rgb(110, 22, 40);
+    margin-bottom: 5px;
+}
+
+.user-details:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.activity-card {
+    margin-bottom: 10px;
+}
+
+.activity-card .date {
+    text-align: start;
+    margin-bottom: 20px;
+    margin-left: -8px;
+}
+
+.activity-card span {
+    padding: 8px;
+    border-radius: 100%;
+    border: 1px solid #481010bc;
+    margin-right: 15px;
+    background-color: rgb(69, 103, 69);
+    color: yellow;
+}
+
+.tbl-div {
+    background-color: #0e3040;
+    margin-bottom: 10px;
+}
+
+.table {
+    margin-left: 3px;
+    margin-bottom: 40px;
+}
+
+.form-width {
+    width: 200px;
+    margin-right: 5px;
+}
+
+@media (max-width: 768px) {
+    .user-detail {
+        width: 80%;
+    }
+    .btn {
+        width: 85%;
+        padding: 10px;
+    }
+    .page-outer {
+        width: 90%;
+        /* margin: auto; */
+        padding-left: 10px;
+        margin-left: 30px;
+    }
+    .form-width {
+        width: 85%;
+    }
+    .date-ranger-wrapper {
+        padding-top: 30px;
+    }
+    .d-none {
+        display: flex;
+    }
+}
+
+
+/* Welcome Banner */
+
+.welcome-banner {
+    background: linear-gradient(135deg, #1f585e 0%, #09323a 100%);
+    /* border-radius: 12px; */
+    padding: 2rem;
+    margin-bottom: 2rem;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* width: 90%; */
+    /* margin: auto; */
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-left: 70px;
+}
+
+
+/* .avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #fff;
+    color: #4f46e5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+} */
+
+.profile-meta {
+    /* display: flex; */
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+    text-align: center;
+}
+
+.badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.church-badge {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.member-badge {
+    background-color: rgba(255, 255, 255, 0.1);
+}

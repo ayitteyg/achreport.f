@@ -1,0 +1,399 @@
+<!-- Loading State -->
+<!-- <div class="text-center py-2" *ngIf="loading">
+    <div class="spinner-border text-primary" role="status">
+        <span class="visually-hidden">Loading...</span>
+    </div>
+    <h5 class="text-muted  p-2"> Dashboard </h5>
+</div> -->
+
+
+<nav class="navbar fixed-top navbar-expand-lg welcome-banner ">
+    <div class="profile-header">
+        <div class="avatar"></div>
+        <div>
+            <h2 class="text-center">Welcome back, {{username}}</h2>
+            <div class="profile-meta">
+                <span class="badge church-badge">{{church}}</span>
+                <span class="badge member-badge">{{department}}</span>
+            </div>
+        </div>
+    </div>
+</nav><br><br><br><br><br><br><br>
+
+
+
+<div class="page-outer">
+
+
+    <div class="row">
+        <!-- date  -->
+        <div class="col-lg-12 col-sm-12">
+            <!-- date filter -->
+            <div class="date-range-wrapper">
+                <form (ngSubmit)="applyFilter()" class="">
+
+                    <!-- Start Date -->
+                    <div class="">
+                        <mat-form-field appearance="outline" class="form-width">
+                            <mat-label>Start Date</mat-label>
+                            <input matInput [matDatepicker]="startPicker" [(ngModel)]="startDate" name="startDate" placeholder="Select start date" required />
+                            <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                            <mat-datepicker #startPicker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+
+                    <!-- End Date -->
+                    <div class="">
+                        <mat-form-field appearance="outline" class="form-width">
+                            <mat-label>End Date</mat-label>
+                            <input matInput [matDatepicker]="endPicker" [(ngModel)]="endDate" name="endDate" placeholder="Select end date" required />
+                            <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+                            <mat-datepicker #endPicker></mat-datepicker>
+                        </mat-form-field>
+                    </div>
+
+                    <!-- Apply Button -->
+                    <div class="">
+                        <button type="submit" class="btn btn-outline-primary">
+                    Apply
+                </button>
+                    </div>
+                </form>
+            </div>
+        </div><br><br><br>
+
+
+        <div class="col-lg-12 col-sm-12">
+
+
+
+            <!-- activity -->
+            <div class=" shadow mx-4 pt-5 card">
+                <div class="">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="title">Submitted Programs & Activities</div>
+
+                            <div class="text-center">
+                                <div style="width: 120px; height: 120px; margin: auto;">
+                                    <circle-progress [percent]="activitySummary.total_activities || 0" [radius]="35" [outerStrokeWidth]="5" [innerStrokeWidth]="4" [outerStrokeColor]="'#306811'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="500" [showUnits]="true"
+                                        [units]="''" [showSubtitle]="false" [showBackground]="false" [responsive]="true" [startFromZero]="false">
+                                    </circle-progress>
+                                </div>
+
+                                <ng-template #loading>
+                                    <p>Loading total score...</p>
+                                </ng-template>
+                            </div>
+
+
+                        </div>
+                        <div class="col-lg-6 tble">
+                            <div>
+                                <table class="table table-borderedd ">
+                                    <tbody>
+
+
+                                        <tr *ngFor="let key of activitySummary?.church_summary | keyvalue">
+                                            <th class="text-muted">{{ key.key }}</th>
+                                            <td class="text-muted">{{ key.value }}</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div> <br><br>
+
+            <!-- baptism -->
+            <div class="shadow mx-4 pt-5 card">
+                <div class="">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="title">Baptisms Reported</div>
+                            <div>
+                                <div style="width: 120px; height: 120px; margin: auto;">
+                                    <ng-container>
+                                        <circle-progress [percent]="baptismSummary.total_baptisms || 0" [radius]="35" [outerStrokeWidth]="5" [innerStrokeWidth]="4" [outerStrokeColor]="'#766000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="500" [showUnits]="true" [units]="''"
+                                            [showSubtitle]="false" [showBackground]="false" [responsive]="true" [startFromZero]="false">
+                                        </circle-progress>
+                                    </ng-container>
+
+                                    <ng-template #loading>
+                                        <p>Loading ...</p>
+                                    </ng-template>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6 tble">
+                            <div>
+                                <table class="table table-bordered">
+                                    <tbody>
+
+                                        <tr *ngFor="let key of baptismSummary?.church_summary | keyvalue">
+                                            <th class="text-muted">{{ key.key }}</th>
+                                            <td class="text-muted">{{ key.value }}</td>
+                                        </tr>
+
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><br><br>
+
+
+            <!-- transfer -->
+            <div class=" shadow mx-4 pt-5 card ">
+                <div class="">
+                    <div class="row">
+                        <div class="col-lg-6">
+
+                            <div class="d-flex">
+
+                                <div>
+                                    <div class="title">Transfers in</div>
+                                    <div style="width: 120px; height: 120px; margin: auto;">
+                                        <ng-container>
+                                            <circle-progress [percent]="transferSummary.transfers_in || 0" [radius]="45" [outerStrokeWidth]="6" [innerStrokeWidth]="2" [outerStrokeColor]="'#394857'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="500" [showUnits]="true" [units]="''"
+                                                [showSubtitle]="false" [showBackground]="false" [responsive]="true" [startFromZero]="false">
+                                            </circle-progress>
+                                        </ng-container>
+
+                                        <ng-template #loading>
+                                            <p>Loading ...</p>
+                                        </ng-template>
+                                    </div>
+                                </div>
+
+
+                                <div>
+                                    <div class="title">Transfers Out</div>
+                                    <div style="width: 120px; height: 120px; margin: auto;">
+                                        <ng-container>
+                                            <circle-progress [percent]="transferSummary.transfers_out || 0" [radius]="35" [outerStrokeWidth]="5" [innerStrokeWidth]="4" [outerStrokeColor]="'#761000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="500" [showUnits]="true" [units]="''"
+                                                [showSubtitle]="false" [showBackground]="false" [responsive]="true" [startFromZero]="false">
+                                            </circle-progress>
+                                        </ng-container>
+
+                                        <ng-template #loading>
+                                            <p>Loading total ...</p>
+                                        </ng-template>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6 tble">
+                            <div>
+                                <table class="table table-bordered">
+                                    <tbody>
+
+                                        <!-- Safe rendering with null checks -->
+                                        <tr>
+                                            <th>Church</th>
+                                            <td>In</td>
+                                            <td>Out</td>
+                                        </tr>
+                                        <ng-container *ngIf="transferSummary?.church_summary">
+                                            <tr *ngFor="let churchName of transferValues()">
+                                                <th class="text-muted">{{ churchName }}</th>
+                                                <td class="text-muted">{{ transferSummary.church_summary[churchName][0] }}</td>
+                                                <td class="text-muted">{{ transferSummary.church_summary[churchName][1] }}</td>
+                                            </tr>
+                                        </ng-container>
+                                        <br>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div><br><br>
+
+
+
+
+
+            <!-- dedication -->
+            <div class="shadow mx-4 p-5  card">
+                <div class="">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="title">Baby Dedications</div>
+                            <div>
+                                <div style="width: 120px; height: 120px; margin: auto;">
+                                    <ng-container>
+                                        <circle-progress [percent]="dedicationSummary.total_dedications || 0" [radius]="35" [outerStrokeWidth]="5" [innerStrokeWidth]="4" [outerStrokeColor]="'#766000'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="500" [showUnits]="true"
+                                            [units]="''" [showSubtitle]="false" [showBackground]="false" [responsive]="true" [startFromZero]="false">
+                                        </circle-progress>
+                                    </ng-container>
+
+                                    <ng-template #loading>
+                                        <p>Loading ...</p>
+                                    </ng-template>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6 tble">
+                            <div>
+                                <table class="table table-bordered">
+                                    <tbody>
+
+
+                                        <tr *ngFor="let key of dedicationSummary?.church_summary | keyvalue">
+                                            <th class="text-muted">{{ key.key }}</th>
+                                            <td class="text-muted">{{ key.value }}</td>
+                                        </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div><br><br>
+
+
+
+
+            <!-- attendance -->
+            <div class="shadow mx-4 p-5 card">
+                <div class="title">Church Attendance Report</div>
+                <div class="">
+
+                    <form (ngSubmit)="applyFilterAttendance()">
+                        <!-- service options -->
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Service options</mat-label>
+                            <mat-select [(ngModel)]="selectedService" name="service">
+                                <mat-option *ngFor="let option of serviceChoices" [value]="option.value">
+                                    {{ option.label }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <!-- select qtr -->
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Qtr</mat-label>
+                            <mat-select [(ngModel)]="selectedQuarter" name="quarter">
+                                <mat-option *ngFor="let q of qtrList" [value]="q">{{ q }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <button type="submit" class="btn btn-outline-primary mb-3">Apply</button>
+                    </form>
+
+
+                </div>
+
+                <div class="">
+                    <div>
+                        <table class="table table-bordered">
+                            <tbody>
+
+
+
+                                <tr *ngFor="let row of attendanceSummary?.attendance_summary | keyvalue">
+                                    <th>{{ row.key }}</th>
+                                    <td class="text-muted">{{ $any(row.value).adult }}</td>
+                                    <td class="text-muted">{{ $any(row.value).youth }}</td>
+                                    <td class="text-muted">{{ $any(row.value).children }}</td>
+                                    <td class="text-muted">{{ $any(row.value).total }}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </div><br><br>
+
+
+
+            <!-- event -->
+            <div class="shadow mx-4 p-5 card bg-success-subtle5">
+                <div class="title"> Visitors</div>
+                <div class="">
+
+                    <form (ngSubmit)="applyFilterVisitor()">
+                        <!-- service options -->
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Service options</mat-label>
+                            <mat-select [(ngModel)]="selectedStatus" name="status">
+                                <mat-option *ngFor="let option of statusChoices" [value]="option.value">
+                                    {{ option.label }}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <!-- select qtr -->
+                        <mat-form-field appearance="outline" class="w-100">
+                            <mat-label>Qtr</mat-label>
+                            <mat-select [(ngModel)]="selectedQuarter" name="visitor_quarter">
+                                <mat-option *ngFor="let q of qtrList" [value]="q">{{ q }}</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <button type="submit" class="btn btn-outline-primary mb-3">Apply</button>
+                    </form>
+
+
+
+                </div>
+
+                <div class="col-lg-10  col-sm-12 shadowbg-primary card">
+                    <div>
+                        <table class="table table-bordered">
+                            <tbody>
+
+                                <tr *ngFor="let key of visitorSummary?.visitor_summary | keyvalue">
+                                    <th class="text-muted">{{ key.key }}</th>
+                                    <td class="text-muted">{{ key.value }}</td>
+
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+
+
+
+
+
+        </div>
+
+    </div>
+</div>

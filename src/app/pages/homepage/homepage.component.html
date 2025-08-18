@@ -1,0 +1,84 @@
+<div class="main-content-container">
+
+    <!-- Toggle Button -->
+
+    <!-- Sidebar -->
+    <div class="sidebar-container">
+
+        <div class="sidebar">
+            <div #sidebar [ngClass]="{ 'sidebar-expanded': !isCollapsed, 'sidebar-collapsed': isCollapsed }" class="sidebar">
+                <div class="text-center logo">
+                    <img class="" src="images/sda.png" alt="" width="50px" height="65px">
+                </div>
+                <!-- Toggle Button -->
+                <button class="toggle-btn" (click)="toggleSidebar()">
+                    <i class="bi" [ngClass]="isCollapsed ? 'bi-arrow-right-circle' : 'bi-arrow-left-circle'"></i>
+                </button>
+
+                <!-- Sidebar Menu -->
+                <ul class="list-group">
+
+                    <!--  Landing page-->
+                    <li class="list-group-item" (click)="setActivePage('home')">
+                        <a>
+                            <i class="bi bi-house-fill"></i>
+                            <span *ngIf="!isCollapsed">Homepage</span>
+                        </a>
+                    </li>
+
+                    <!-- Dashboard Link -->
+
+                    <li class="list-group-item" (click)="setActivePage('dist/dashboard')">
+                        <a>
+                            <i class="bi bi-bar-chart-line"></i>
+                            <span *ngIf="!isCollapsed">Dashboard</span>
+                        </a>
+                    </li>
+
+
+
+                    <li class="list-group-item" (click)="setActivePage('local/dashboard')">
+                        <a>
+                            <i class="bi bi-speedometer2"></i>
+                            <span *ngIf="!isCollapsed">Dashboard</span>
+                        </a>
+                    </li>
+
+
+                    <li class="list-group-item" (click)="setActivePage('report/page')">
+                        <a>
+                            <i class="bi bi-download"></i>
+                            <span *ngIf="!isCollapsed">Report</span>
+                        </a>
+                    </li>
+
+
+
+
+                    <li class="list-group-item text-danger">
+                        <a (click)="logout()"><i class="bi bi-lock-fill"></i> <a *ngIf="!isCollapsed" class="mx-1 text-warning">Logout</a></a>
+                    </li>
+                </ul>
+
+
+
+
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Main Content -->
+    <div class="content">
+
+        <div [ngSwitch]="activePage">
+            <app-landing-page *ngSwitchCase="'home'"></app-landing-page>
+            <app-dist-dashboard *ngSwitchCase="'dist/dashboard'"></app-dist-dashboard>
+            <app-local-dashboard *ngSwitchCase="'local/dashboard'"></app-local-dashboard>
+            <app-report-page *ngSwitchCase="'report/page'"></app-report-page>
+
+        </div>
+    </div>
+
+</div>

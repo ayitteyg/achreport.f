@@ -1,0 +1,183 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inconsolata:wght@200..900&display=swap');
+* {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    /* font-family: "Bebas Neue", serif; */
+    font-size: 15px;
+}
+
+.main-outer-card {
+    height: 170px;
+    padding: 10px;
+    border-radius: 15px;
+    /* margin-left: 25px; */
+}
+
+.page-outer {
+    width: 90%;
+    margin: auto;
+    /* padding-left: 10px;
+    margin-left: 90px;
+    margin-bottom: 60px; */
+}
+
+.title {
+    font-size: 14px;
+    color: rgb(110, 22, 40);
+    margin-bottom: 5px;
+}
+
+.card {
+    transition: all 0.3s ease;
+    padding: 30px;
+    /* margin-left: 90px; */
+    /* width: 500px; */
+    margin: auto;
+    width: 90%;
+    /* background: #032536; */
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.tble {
+    /* background-color: rgb(205, 155, 5); */
+    height: 200px;
+    overflow-y: auto;
+    padding: 5px;
+    /* Scrollbar Styling */
+    scrollbar-width: thin;
+    /* For Firefox */
+    scrollbar-color: #b0b8bc #f3f4f6;
+    border-left: 1px solid rgb(171, 135, 8);
+}
+
+th {
+    text-align: start !important;
+    font-weight: normal !important;
+    color: rgb(6, 65, 99);
+    /* This removes the bold style */
+}
+
+.btn {
+    width: 85%;
+    padding: 10px;
+}
+
+.form-width {
+    width: 85%;
+}
+
+.date-range-wrapper {
+    /* background: #f9f9f9; */
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    width: 65%;
+    margin: auto;
+    padding-bottom: 30px;
+    mat-form-field {
+        font-size: 14px;
+    }
+    @media (max-width: 768px) {
+        .daterow {
+            flex-direction: column;
+        }
+        .col-md-5,
+        .col-md-2 {
+            width: 90%;
+            /* margin-bottom: 10px; */
+            margin-left: 50px;
+        }
+        .apply-btn {
+            margin-top: -10px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    th {
+        font-size: 13px;
+        text-align: start !important;
+        font-weight: normal;
+        margin-left: 50px;
+        /* This removes the bold style */
+    }
+    .trns-card {
+        margin-left: 55px;
+    }
+    .form-width {
+        width: 90%;
+    }
+    .date-ranger-wrapper {
+        padding-top: 30px;
+    }
+    .btn {
+        width: 90%;
+        padding: 10px;
+    }
+    .page-outer {
+        width: 90%;
+        /* margin: auto; */
+        padding-left: 10px;
+        margin-left: 30px;
+    }
+}
+
+
+/* Welcome Banner */
+
+.welcome-banner {
+    background: linear-gradient(135deg, #1f585e 0%, #09323a 100%);
+    /* border-radius: 12px; */
+    padding: 2rem;
+    margin-bottom: 2rem;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* width: 90%; */
+    /* margin: auto; */
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding-left: 70px;
+}
+
+
+/* .avatar {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background-color: #fff;
+    color: #4f46e5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+} */
+
+.profile-meta {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
+}
+
+.badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+.church-badge {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+.member-badge {
+    background-color: rgba(255, 255, 255, 0.1);
+}

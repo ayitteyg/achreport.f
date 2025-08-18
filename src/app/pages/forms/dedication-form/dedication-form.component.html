@@ -1,0 +1,86 @@
+<div class="form-container">
+    <form [formGroup]="dedicationForm" class="grid55 bg-white rounded-xl shadow frm">
+
+        <!-- Church -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Church</mat-label>
+            <mat-select formControlName="church">
+                <mat-option *ngFor="let c of churchList" [value]="c">{{ c }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- Date of Dedication -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Dedication Date</mat-label>
+            <input matInput [matDatepicker]="dedicationDate" formControlName="date" placeholder="Select date">
+            <mat-datepicker-toggle matSuffix [for]="dedicationDate"></mat-datepicker-toggle>
+            <mat-datepicker #dedicationDate></mat-datepicker>
+        </mat-form-field>
+
+        <!-- Child Name -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Child Name</mat-label>
+            <input matInput formControlName="child_name" placeholder="e.g. Emmanuel Kwabena">
+        </mat-form-field>
+
+        <!-- Date of Birth -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Child's Date of Birth</mat-label>
+            <input matInput [matDatepicker]="dobPicker" formControlName="date_of_birth" placeholder="Select date">
+            <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+            <mat-datepicker #dobPicker></mat-datepicker>
+        </mat-form-field>
+
+        <!-- Place of Birth -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Place of Birth</mat-label>
+            <input matInput formControlName="place_of_birth" placeholder="e.g. Ridge Hospital">
+        </mat-form-field>
+
+        <!-- Mother's Name -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Mother's Name</mat-label>
+            <input matInput formControlName="mother_name" placeholder="e.g. Akua Serwaa">
+        </mat-form-field>
+
+        <!-- Father's Name -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Father's Name</mat-label>
+            <input matInput formControlName="father_name" placeholder="e.g. Kofi Mensah">
+        </mat-form-field>
+
+        <!-- Submit -->
+        <div class="d-grid mt-4">
+            <button type="submit" class="btn btn-primary btn-lg" [disabled]="dedicationForm.invalid || isSubmitting" data-bs-toggle="modal" data-bs-target="#confirmModal">
+        <span *ngIf="!isSubmitting">
+          <i class="bi bi-save me-2"></i>Save Dedication
+        </span>
+        <span *ngIf="isSubmitting">
+          <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+          Saving...
+        </span>
+      </button>
+        </div>
+    </form>
+</div>
+
+<!-- Confirmation Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered custom-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Submission</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to save this dedication record?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" (click)="confirmSubmission()" data-bs-dismiss="modal">
+          <i class="bi bi-check-circle me-1"></i> Yes, Submit
+        </button>
+            </div>
+        </div>
+    </div>
+</div>

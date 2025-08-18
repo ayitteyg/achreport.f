@@ -1,0 +1,87 @@
+<p>event-form works!</p>
+<div class="form-container">
+    <form [formGroup]="eventForm" class="grid55 bg-white rounded-xl shadow frm">
+
+        <!-- Church -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Church</mat-label>
+            <mat-select formControlName="church">
+                <mat-option *ngFor="let c of churchList" [value]="c">{{ c }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- Date -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="eventDate" formControlName="date" placeholder="Select date">
+            <mat-datepicker-toggle matSuffix [for]="eventDate"></mat-datepicker-toggle>
+            <mat-datepicker #eventDate></mat-datepicker>
+        </mat-form-field>
+
+        <!-- Event Type -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Event Type</mat-label>
+            <mat-select formControlName="event_type">
+                <mat-option *ngFor="let e of eventTypeList" [value]="e">{{ e }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- Event Place -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Event Place</mat-label>
+            <input matInput formControlName="event_place" placeholder="e.g. Tema Community 8">
+        </mat-form-field>
+
+        <!-- Member Involved -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Member Involved</mat-label>
+            <input matInput formControlName="member_involved" placeholder="e.g. Sister Abena">
+        </mat-form-field>
+
+        <!-- Event Detail -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Event Detail</mat-label>
+            <textarea matInput formControlName="event_detail" placeholder="e.g. Burial of..."></textarea>
+        </mat-form-field>
+
+        <!-- Remarks -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Remarks</mat-label>
+            <textarea matInput formControlName="remarks" placeholder="e.g. Elders were present"></textarea>
+        </mat-form-field>
+
+        <!-- Submit -->
+        <div class="d-grid mt-4">
+            <button type="submit" class="btn btn-primary btn-lg" [disabled]="eventForm.invalid || isSubmitting" data-bs-toggle="modal" data-bs-target="#confirmModal">
+        <span *ngIf="!isSubmitting">
+          <i class="bi bi-save me-2"></i>Save Event
+        </span>
+        <span *ngIf="isSubmitting">
+          <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+          Saving...
+        </span>
+      </button>
+        </div>
+    </form>
+</div>
+
+<!-- Confirmation Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered custom-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Confirm Submission</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to save this event record?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" (click)="confirmSubmission()" data-bs-dismiss="modal">
+          <i class="bi bi-check-circle me-1"></i> Yes, Submit
+        </button>
+            </div>
+        </div>
+    </div>
+</div>

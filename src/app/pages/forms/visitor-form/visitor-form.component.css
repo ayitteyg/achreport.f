@@ -1,0 +1,27 @@
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inconsolata:wght@200..900&display=swap');
+* {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    font-size: 14px;
+}
+
+.mat-form {
+    margin: auto;
+    /* background-color: aqua; */
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 300px;
+}
+
+
+/* Mobile Responsive */
+
+@media (max-width: 768px) {
+    * {
+        font-size: 13px;
+    }
+    .mat-form {
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,88 @@
+<nav class="navbar navbar-expand-lg fixed-top p-4">
+</nav>
+
+
+
+<div class="login-background">
+    <div class="mask"></div>
+    <!-- Mask overlay -->
+
+    <div class="container mt-0"> <br> <br>
+        <div class="row justify-content-center">
+            <p class=" text-light text-center app-name  typing-animations">{{ displayedText }}</p>
+
+            <div class="col-md-6 col-sm-1">
+
+
+                <div class="card">
+                    <div class="card-img-container">
+                        <img class="" src="images/sda.png" alt="" width="80px" height="95px">
+                    </div>
+                    <div class="card-body">
+                        <form #formData [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                            <!-- <form #formData ="ngForm"  (ngSubmit)="onSubmit(formData)"> -->
+
+                            <!-- Username field -->
+                            <div class="mb-3">
+                                <!-- <label for="username" class="form-label">Username</label> -->
+                                <div class="input-group ">
+                                    <span class="input-group-text">
+                                <i class="bi bi-person"></i> <!-- Bootstrap Icons -->
+                              </span>
+                                    <input type="text" placeholder="Contact" class="form-control" id="username" formControlName="username" [ngClass]="{ 'is-invalid': isSubmitted && formControls['username'].errors }" />
+                                </div>
+
+                                <div *ngIf="isSubmitted && formControls['username'].errors" class="invalid-feedback d-block">
+                                    <div *ngIf="formControls['username'].errors['required']">Username is required</div>
+                                </div>
+                            </div>
+
+
+
+                            <!--password input-->
+                            <div class="mb-3">
+                                <div class="input-group">
+                                    <span class="input-group-text">
+                                <i class="bi bi-lock"></i> <!-- Bootstrap Icons -->
+                              </span>
+                                    <input type="password" placeholder="Password" class="form-control" id="password" readonly="True" formControlName="password" [ngClass]="{ 'is-invalid': isSubmitted && formControls['password'].errors }" />
+                                </div>
+
+                                <div *ngIf="isSubmitted && formControls['password'].errors" class="invalid-feedback d-block">
+                                    <div *ngIf="formControls['password'].errors['required']">Password is required</div>
+                                    <div *ngIf="formControls['password'].errors['minlength']">Password must be at least 6 characters</div>
+                                </div>
+                            </div>
+
+
+
+                            <!-- Error message -->
+                            <div *ngIf="errorMessage" class="alert alert-danger">
+                                {{ errorMessage }}
+                            </div>
+
+
+                            <!-- Submit button with loading state -->
+                            <div class="d-grid">
+                                <button type="submit" class="btn main-btn-color" [disabled]="isLoading">
+                            <span *ngIf="!isLoading">Login</span>
+                            <span *ngIf="isLoading">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            Logging in...
+                            </span>
+                        </button>
+                            </div>
+
+
+
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-5">
+            <p class="text-warning">All Right Reserved ©2025, powered by ayigoTech</p>
+        </div>
+    </div>
+
+</div>

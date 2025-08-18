@@ -1,0 +1,118 @@
+<div class="form-container">
+
+    <form [formGroup]="activityForm" class="grid55  bg-white rounded-xl shadow frm">
+
+        <!-- Church -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Church</mat-label>
+            <mat-select formControlName="church">
+                <mat-option *ngFor="let c of churchList" [value]="c">{{ c }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- Department (Searchable) -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Department</mat-label>
+            <mat-select formControlName="department">
+                <!-- Search box -->
+                <mat-option>
+                    <ngx-mat-select-search [formControl]="departmentFilterControl" placeholderLabel="Search department..." noEntriesFoundLabel="No match found"></ngx-mat-select-search>
+                </mat-option>
+
+                <!-- Filtered results -->
+                <mat-option *ngFor="let dept of filteredDepartments" [value]="dept">
+                    {{ dept }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- Program -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Program</mat-label>
+            <input matInput formControlName="program" placeholder="Enter program name">
+        </mat-form-field>
+
+        <!-- Date (with calendar) -->
+        <mat-form-field appearance="outline" class="w-full  mat-form ">
+            <mat-label>Date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="date" placeholder="Select date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <!-- Type -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Type</mat-label>
+            <mat-select formControlName="typ">
+                <mat-option *ngFor="let t of typeList" [value]="t">{{ t }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- Facilitator -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Facilitator</mat-label>
+            <input matInput formControlName="facilitator" placeholder="Facilitator (optional)">
+        </mat-form-field>
+
+        <!-- Expense -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Expense</mat-label>
+            <input matInput type="number" formControlName="expense" placeholder="0.00">
+        </mat-form-field>
+
+        <!-- Income -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Income</mat-label>
+            <input matInput type="number" formControlName="income" placeholder="0.00">
+        </mat-form-field>
+
+        <!-- Rating -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Rating</mat-label>
+            <mat-select formControlName="rating">
+                <mat-option *ngFor="let r of ratingList" [value]="r">{{ r }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+
+
+        <div class="d-grid mt-4">
+            <button type="submit" class="btn btn-primary btn-lg" [disabled]="activityForm.invalid || isSubmitting" data-bs-toggle="modal" data-bs-target="#confirmModal">
+                        <span *ngIf="!isSubmitting">
+                        <i class="bi bi-save me-2"></i>Submit
+                        </span>
+                        <span *ngIf="isSubmitting">
+                        <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+                       Saving data...
+                        </span>
+                  </button>
+        </div>
+
+
+    </form>
+</div>
+
+
+
+
+
+<!-- Confirmation Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered  custom-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">Confirm Submission</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to submit this shop sales record?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" (click)="confirmSubmission()" data-bs-dismiss="modal">
+          <i class="bi bi-check-circle me-1"></i> Yes, Submit
+        </button>
+            </div>
+        </div>
+    </div>
+</div>

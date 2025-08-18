@@ -1,0 +1,148 @@
+<nav class="navbar fixed-top navbar-expand-lg welcome-banner ">
+    <div class="profile-header">
+        <div class="avatar"></div>
+        <div>
+            <h2 class="text-center">Welcome back, {{username}}</h2>
+            <div class="profile-meta">
+                <span class="badge church-badge">{{church}}</span>
+                <span class="badge member-badge">{{department}}</span>
+            </div>
+        </div>
+    </div>
+</nav>br><br><br><br><br><br><br>
+
+
+<div class="page-outer pt-2">
+
+    <!-- Welcome Banner with Profile -->
+
+    <!-- <div class="user-details p-4 shadow">
+        <h4 class="text-muted"><span class="text-info">Achimota Church</span> - Youth Department</h4>
+
+    </div> -->
+    <div class="row">
+        <div class="col-lg-6 col-sm-12 pt-5">
+            <div class="date-ranger-wrapper">
+                <div class="row form-cardsSS">
+                    <form (ngSubmit)="applyFilter()" class="d-md-flex">
+                        <div class="col-md-4 col-sm-12">
+                            <!-- Start Date -->
+                            <mat-form-field appearance="outline" class="form-width">
+                                <mat-label>Start Date</mat-label>
+                                <input matInput [matDatepicker]="startPicker" [(ngModel)]="startDate" name="startDate" placeholder="Select start date" required />
+                                <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                                <mat-datepicker #startPicker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+
+                        <!-- End Date -->
+                        <div class="col-md-4 col-sm-12">
+                            <mat-form-field appearance="outline" class="form-width">
+                                <mat-label>End Date</mat-label>
+                                <input matInput [matDatepicker]="endPicker" [(ngModel)]="endDate" name="endDate" placeholder="Select end date" required />
+                                <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+                                <mat-datepicker #endPicker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="col-md-4 col-sm-12">
+                            <button type="submit" class="btn btn-outline-primary form-width">Apply</button>
+                        </div><br><br>
+                    </form>
+
+
+                </div>
+            </div><br><br>
+
+            <div class="">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="title">Submitted Programs & Activities</div>
+
+                        <div class="text-center">
+                            <div style="width: 300px; height: 300px; margin: auto;">
+                                <circle-progress [percent]="departmentSummary.total_activities || 0" [radius]="35" [outerStrokeWidth]="5" [innerStrokeWidth]="4" [outerStrokeColor]="'#306811'" [innerStrokeColor]="'#C7E596'" [animation]="true" [animationDuration]="500" [showUnits]="true"
+                                    [units]="''" [showSubtitle]="false" [showBackground]="false" [responsive]="true" [startFromZero]="false">
+                                </circle-progress>
+                            </div>
+
+                            <ng-template #loading>
+                                <p>Loading total score...</p>
+                            </ng-template>
+                        </div>
+
+
+                    </div>
+                    <!-- <div class="col-lg-12">
+                        <div class="mb-2">
+                            <button class="btn btn-outline-primary">generate report</button>
+                        </div>
+                        <div>
+                            <button class="btn btn-outline-primary">download file</button>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </div>
+
+
+        <div class="col-lg-6 col-sm-12 p-5">
+
+            <div *ngIf="departmentDetails.length> 0; else noData">
+                <div *ngFor="let p of departmentDetails; let i = index" class="activity-card">
+                    <div class="date">
+                        <span>{{i+1}}</span>
+                        <a>{{p.date}}</a>
+                    </div>
+                    <div class="tbl-div">
+                        <table class="table table-bordered ">
+                            <tbody>
+                                <tr>
+                                    <th class="text-muted text-start">program</th>
+                                    <td class="text-muted text-start">{{p.program}}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-muted text-start">Facilitator</th>
+                                    <td class="text-muted text-start">{{p.facilitator}}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-muted text-start">Type</th>
+                                    <td class="text-muted text-start">{{p.typ}}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-muted text-start">Expense</th>
+                                    <td class="text-muted text-start">{{ p.expense | currency:'GHS':'symbol':'1.2-2' }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-muted text-start">Income</th>
+                                    <td class="text-muted text-start">{{ p.income | currency:'GHS':'symbol':'1.2-2' }}</td>
+                                </tr>
+                                <tr>
+                                    <th class="text-muted text-start">Ratings</th>
+                                    <td class="text-muted text-start">{{p.rating}}</td>
+                                </tr>
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- This block will show if there is no data -->
+            <ng-template #noData>
+                <div class="text-center text-muted">
+                    <p class="text-danger">No activity details available for the selected period.</p>
+                    <img class="" src="images/no-report.avif" alt="" width="200px" height="230px">
+                </div>
+            </ng-template>
+
+        </div>
+    </div>
+
+
+
+
+
+</div>

@@ -1,0 +1,114 @@
+<div class="form-container">
+    <form [formGroup]="transferForm" class="grid55 bg-white rounded-xl shadow frm">
+
+        <!-- Church -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Church</mat-label>
+            <mat-select formControlName="church">
+                <mat-option *ngFor="let c of churchList" [value]="c">{{ c }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- Type -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Transfer Type</mat-label>
+            <mat-select formControlName="typ">
+                <mat-option *ngFor="let t of transferTypeList" [value]="t">{{ t }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- First Name -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="first_name" placeholder="Enter first name">
+        </mat-form-field>
+
+        <!-- Other Names -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Other Names</mat-label>
+            <input matInput formControlName="other_names" placeholder="Enter other names (optional)">
+        </mat-form-field>
+
+        <!-- Gender -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender">
+                <mat-option *ngFor="let g of genderList" [value]="g">{{ g }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- Date Church Voted -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Date Church Voted</mat-label>
+            <input matInput [matDatepicker]="votePicker" formControlName="date_church_voted" placeholder="Select date">
+            <mat-datepicker-toggle matSuffix [for]="votePicker"></mat-datepicker-toggle>
+            <mat-datepicker #votePicker></mat-datepicker>
+        </mat-form-field>
+
+        <!-- Minutes Number -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Minutes Number</mat-label>
+            <input matInput formControlName="minutes_number" placeholder="MTG-2025-005">
+        </mat-form-field>
+
+        <!-- Sending Church -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Sending Church</mat-label>
+            <input matInput formControlName="sending_church" placeholder="e.g. Tema SDA Church">
+        </mat-form-field>
+
+        <!-- Receiving Church -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Receiving Church</mat-label>
+            <input matInput formControlName="receiving_church" placeholder="e.g. Achimota SDA Church">
+        </mat-form-field>
+
+        <!-- Status -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Status</mat-label>
+            <mat-select formControlName="status">
+                <mat-option *ngFor="let s of transferStatusList" [value]="s">{{ s }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- Contact -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Contact</mat-label>
+            <input matInput formControlName="contact" placeholder="e.g. 0551234567">
+        </mat-form-field>
+
+        <!-- Submit -->
+        <div class="d-grid mt-4">
+            <button type="submit" class="btn btn-primary btn-lg" [disabled]="transferForm.invalid || isSubmitting" data-bs-toggle="modal" data-bs-target="#confirmModal">
+        <span *ngIf="!isSubmitting">
+          <i class="bi bi-save me-2"></i>Save Transfer Record
+        </span>
+        <span *ngIf="isSubmitting">
+          <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+          Saving data...
+        </span>
+      </button>
+        </div>
+    </form>
+</div>
+
+<!-- Confirmation Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered custom-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">Confirm Submission</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to submit this transfer record?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" (click)="confirmSubmission()" data-bs-dismiss="modal">
+          <i class="bi bi-check-circle me-1"></i> Yes, Submit
+        </button>
+            </div>
+        </div>
+    </div>
+</div>

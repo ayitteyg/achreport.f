@@ -1,0 +1,88 @@
+<div class="page-outer pt-5">
+
+
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 select-model">
+
+            <mat-form-field appearance="outline" class="form-width">
+                <mat-label>Select Report</mat-label>
+                <mat-select [(ngModel)]="selectedModel" name="selectedModel" (selectionChange)="loadExportData()">
+                    <mat-option *ngFor="let model of exportableModels" [value]="model">{{ model }}</mat-option>
+                </mat-select>
+            </mat-form-field>
+
+
+
+            <!-- date  -->
+            <div class="col-lg-12 col-sm-12">
+                <!-- date filter -->
+                <div class="date-range-wrapper">
+                    <form class="">
+
+                        <!-- Start Date -->
+                        <div class="">
+                            <mat-form-field appearance="outline" class="form-width">
+                                <mat-label>Start Date</mat-label>
+                                <input matInput [matDatepicker]="startPicker" [(ngModel)]="startDate" name="startDate" placeholder="Select start date" required />
+                                <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                                <mat-datepicker #startPicker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+
+                        <!-- End Date -->
+                        <div class="">
+                            <mat-form-field appearance="outline" class="form-width">
+                                <mat-label>End Date</mat-label>
+                                <input matInput [matDatepicker]="endPicker" [(ngModel)]="endDate" name="endDate" placeholder="Select end date" required />
+                                <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+                                <mat-datepicker #endPicker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+                    </form>
+                </div>
+            </div><br><br><br>
+
+
+            <div class="col-lg-12">
+
+                <div class="mtt-3 ptt-3 mm-3">
+                    <button class="form-width btn btn-danger me-2 mb-3" (click)="exportAsPDF(startDate, endDate)">Generate Report (PDF)</button>
+                    <!-- <button class="form-width btn btn-success" (click)="exportAsExcel()">Export as Excel</button> -->
+                </div>
+
+            </div>
+        </div>
+
+
+
+        <!-- <div class="col-lg-6 col-sm-12 pt-5 tbl">
+            <div *ngIf="availableFields.length > 0">
+                <h4 class="mb-3  text-danger text-muted">Select Fields to Export</h4>
+
+                <table class="table table-bordered table-sm">
+                    <thead class="table-light">
+                        <tr>
+                            <th style="width: 40px;">#</th>
+                            <th>Field</th>
+                            <th style="width: 100px;">Include</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let field of availableFields; let i = index">
+                            <td class="text-muted">{{ i + 1 }}</td>
+                            <td class="text-muted">{{ field | titlecase }}</td>
+                            <td class="text-muted">
+                                <mat-checkbox [(ngModel)]="fieldSelections[field]" [name]="field" class="d-block mx-auto">
+                                </mat-checkbox>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div> -->
+    </div>
+
+
+
+
+</div>

@@ -1,0 +1,133 @@
+<div class="form-container">
+    <form [formGroup]="baptismForm" class="grid55 bg-white rounded-xl shadow frm">
+        <!-- Church -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Church</mat-label>
+            <mat-select formControlName="church">
+                <mat-option *ngFor="let c of churchList" [value]="c">{{ c }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- Type -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Type</mat-label>
+            <mat-select formControlName="typ">
+                <mat-option *ngFor="let t of typeList" [value]="t">{{ t }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- First Name -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>First Name</mat-label>
+            <input matInput formControlName="first_name" placeholder="Enter first name">
+        </mat-form-field>
+
+        <!-- Other Names -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Other Names</mat-label>
+            <input matInput formControlName="other_names" placeholder="Other names (optional)">
+        </mat-form-field>
+
+        <!-- Gender -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Gender</mat-label>
+            <mat-select formControlName="gender">
+                <mat-option *ngFor="let g of genderList" [value]="g">{{ g }}</mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <!-- Date of Birth -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Date of Birth</mat-label>
+            <input matInput [matDatepicker]="dobPicker" formControlName="date_of_birth" placeholder="Select date">
+            <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+            <mat-datepicker #dobPicker></mat-datepicker>
+        </mat-form-field>
+
+        <!-- Church Voted Date -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Date Church Voted</mat-label>
+            <input matInput [matDatepicker]="votePicker" formControlName="date_church_voted" placeholder="Select date">
+            <mat-datepicker-toggle matSuffix [for]="votePicker"></mat-datepicker-toggle>
+            <mat-datepicker #votePicker></mat-datepicker>
+        </mat-form-field>
+
+        <!-- Date Baptized -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Date Baptized</mat-label>
+            <input matInput [matDatepicker]="bapPicker" formControlName="date_baptized" placeholder="Select date">
+            <mat-datepicker-toggle matSuffix [for]="bapPicker"></mat-datepicker-toggle>
+            <mat-datepicker #bapPicker></mat-datepicker>
+        </mat-form-field>
+
+        <!-- Minutes Number -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Minutes Number</mat-label>
+            <input matInput formControlName="minutes_number" placeholder="MTG-2025-001">
+        </mat-form-field>
+
+        <!-- Baptized By -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Baptized By</mat-label>
+            <input matInput formControlName="baptized_by" placeholder="e.g. Pastor John Doe">
+        </mat-form-field>
+
+        <!-- Place Baptized -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Place Baptized</mat-label>
+            <input matInput formControlName="place_baptized" placeholder="e.g. Church premises">
+        </mat-form-field>
+
+        <!-- Mother's Name -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Mother's Name</mat-label>
+            <input matInput formControlName="mothers_name" placeholder="e.g. Mary Doe">
+        </mat-form-field>
+
+        <!-- Father's Name -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Father's Name</mat-label>
+            <input matInput formControlName="fathers_name" placeholder="e.g. James Doe">
+        </mat-form-field>
+
+        <!-- Contact -->
+        <mat-form-field appearance="outline" class="w-full mat-form">
+            <mat-label>Contact</mat-label>
+            <input matInput type="tel" formControlName="contact" placeholder="e.g. 0551234567">
+        </mat-form-field>
+
+        <!-- Submit Button -->
+        <div class="d-grid mt-4">
+            <button type="submit" class="btn btn-primary btn-lg" [disabled]="baptismForm.invalid || isSubmitting" data-bs-toggle="modal" data-bs-target="#confirmModal">
+        <span *ngIf="!isSubmitting">
+          <i class="bi bi-save me-2"></i>Save Baptism Record
+        </span>
+        <span *ngIf="isSubmitting">
+          <span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>
+          Saving data...
+        </span>
+      </button>
+        </div>
+    </form>
+</div>
+
+<!-- Confirmation Modal -->
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered custom-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalLabel">Confirm Submission</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Are you sure you want to submit this baptism record?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <button type="button" class="btn btn-success" (click)="confirmSubmission()" data-bs-dismiss="modal">
+          <i class="bi bi-check-circle me-1"></i> Yes, Submit
+        </button>
+            </div>
+        </div>
+    </div>
+</div>
