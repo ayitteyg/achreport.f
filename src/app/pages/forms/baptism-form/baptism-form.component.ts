@@ -20,6 +20,14 @@ churchList = ['Achimota', 'Prince of Peace', 'King of Glory', 'Nii Boi Town', 'I
 typeList = ['local', 'district', 'zonal', 'conference'];
 genderList = ['M', 'F'];
 
+pastors: string[] = [
+  "Pastor Eric Owusu Gyan",
+  "Pastor Baah Prempeh",
+  "Pastor Samuel Okuta",
+  "Other"
+];
+
+
 isSubmitting = false;
   router: any;
 

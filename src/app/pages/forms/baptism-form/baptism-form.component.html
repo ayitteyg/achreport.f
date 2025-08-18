@@ -69,9 +69,12 @@
         <!-- Baptized By -->
         <mat-form-field appearance="outline" class="w-full mat-form">
             <mat-label>Baptized By</mat-label>
-            <input matInput formControlName="baptized_by" placeholder="e.g. Pastor John Doe">
+            <mat-select formControlName="baptized_by">
+                <mat-option *ngFor="let pastor of pastors" [value]="pastor">
+                    {{ pastor }}
+                </mat-option>
+            </mat-select>
         </mat-form-field>
-
         <!-- Place Baptized -->
         <mat-form-field appearance="outline" class="w-full mat-form">
             <mat-label>Place Baptized</mat-label>
