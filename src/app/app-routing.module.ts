@@ -8,10 +8,7 @@ const routes: Routes = [
    { path:'', component:LoginComponent },
    { path:'landing-page', component:LandingPageComponent },
    { path:'homepage', component:HomepageComponent },
-  
-   
-  
-  {path: '**',   component:HomepageComponent },
+   {path: '**',   component:HomepageComponent },
   
 ];
 

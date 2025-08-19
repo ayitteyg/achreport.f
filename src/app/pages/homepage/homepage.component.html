@@ -29,7 +29,7 @@
                     <!-- Dashboard Link -->
 
                     <li class="list-group-item" (click)="setActivePage('dist/dashboard')">
-                        <a>
+                        <a *ngIf="!isDistrict">
                             <i class="bi bi-bar-chart-line"></i>
                             <span *ngIf="!isCollapsed">Dashboard</span>
                         </a>
