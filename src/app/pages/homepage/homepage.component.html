@@ -29,7 +29,7 @@
                     <!-- Dashboard Link -->
 
                     <li class="list-group-item" (click)="setActivePage('dist/dashboard')">
-                        <a *ngIf="!isDistrict">
+                        <a *ngIf="isDistrict">
                             <i class="bi bi-bar-chart-line"></i>
                             <span *ngIf="!isCollapsed">Dashboard</span>
                         </a>
@@ -38,7 +38,7 @@
 
 
                     <li class="list-group-item" (click)="setActivePage('local/dashboard')">
-                        <a>
+                        <a *ngIf="isLocal">
                             <i class="bi bi-speedometer2"></i>
                             <span *ngIf="!isCollapsed">Dashboard</span>
                         </a>
@@ -54,15 +54,10 @@
 
 
 
-
                     <li class="list-group-item text-danger">
                         <a (click)="logout()"><i class="bi bi-lock-fill"></i> <a *ngIf="!isCollapsed" class="mx-1 text-warning">Logout</a></a>
                     </li>
                 </ul>
-
-
-
-
 
             </div>
         </div>
