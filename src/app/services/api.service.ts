@@ -269,7 +269,7 @@ getTransferPdfReport(start: string, end: string): Observable<any[]> {
 }
 
 getDedicationPdfReport(start: string, end: string): Observable<any[]> {
-  return this.http.get<any[]>(`${this.apiUrl}/generate-transfer-report/?start_date=${start}&end_date=${end}`);
+  return this.http.get<any[]>(`${this.apiUrl}/generate-dedication-report/?start_date=${start}&end_date=${end}`);
 }
 
 getAttendancePdfReport(start: string, end: string): Observable<any[]> {

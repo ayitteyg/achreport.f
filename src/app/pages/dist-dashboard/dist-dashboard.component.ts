@@ -75,6 +75,7 @@ attendanceSummary: any = {};
 dedicationSummary: any = {};
 visitorSummary: any = {};
 eventSummary: any = {};
+isLoading:boolean = false
 
 
   // add others as needed
@@ -199,16 +200,20 @@ eventSummary: any = {};
     this.selectedStatus
   ).subscribe({
     next: (res) => {
+      this.isLoading = true
 
       console.log('Full API Response:', res);  // Add this
 
       this.visitorSummary = res.visitor_summary || {};
       this.loading = false;
+      this.isLoading = false
       console.log(this.visitorSummary?.visitor_summary);
+
     },
     error: (err) => {
       console.error(err.message || err);
       this.loading = false;
+      this.isLoading = false
       this.handleSubmissionError(err);
     }
   });
