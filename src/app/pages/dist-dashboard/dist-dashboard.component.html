@@ -55,7 +55,12 @@
                     <!-- Apply Button -->
                     <div class="">
                         <button type="submit" class="btn btn-outline-primary">
-                    Apply
+                         <span *ngIf="!isLoading">Apply</span>
+                            <span *ngIf="isLoading">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            refreshing data...
+                            </span>
+                    
                 </button>
                     </div>
                 </form>
@@ -293,7 +298,12 @@
                         </mat-form-field>
 
                         <button type="submit" class="btn btn-outline-primary mb-3">
-                            <span>Apply</span>
+                         
+                            <span *ngIf="!isLoading">Apply</span>
+                            <span *ngIf="isLoading">
+                            <span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
+                            refreshing data...
+                            </span>
                             
                         </button>
 

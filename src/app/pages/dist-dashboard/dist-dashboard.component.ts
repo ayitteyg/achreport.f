@@ -150,8 +150,10 @@ isLoading:boolean = false
 
 
    applyFilter(): void {
+    this.isLoading = true
     if (this.startDate && this.endDate) {
       this.fetchSummary();
+    this.isLoading = false
     }
   }
 
@@ -219,9 +221,12 @@ isLoading:boolean = false
   });
 }
   applyFilterVisitor(): void {
+    this.isLoading = true
     if (this.selectedStatus && this.selectedQuarter) {
       this.fetchSummaryVisitor();
+      this.isLoading = false
     }
+    
   }
 
 
