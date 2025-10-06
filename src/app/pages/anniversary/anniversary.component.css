@@ -693,6 +693,17 @@
         grid-template-columns: 1fr;
         gap: 10px;
     }
+    .header p {
+        font-size: 12px;
+    }
+    .metric-value {
+        font-size: 15px;
+    }
+    .metric-label {
+        font-size: 13px;
+        opacity: 0.9;
+        font-weight: 100;
+    }
 }
 
 @media (max-width: 480px) {
@@ -718,7 +729,7 @@
     align-items: center;
     gap: 8px;
     padding: 10px 16px;
-    background: linear-gradient(135deg, #e74c3c, #c0392b);
+    background: linear-gradient(135deg, #4e9fba, #26a579);
     color: white;
     border: none;
     border-radius: 25px;
@@ -726,7 +737,7 @@
     font-size: 0.9rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.3);
+    box-shadow: 0 4px 12px rgba(103, 196, 188, 0.3);
     &:hover {
         transform: translateY(-2px);
         box-shadow: 0 6px 20px rgba(231, 76, 60, 0.4);
