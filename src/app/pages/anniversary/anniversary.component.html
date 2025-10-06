@@ -58,7 +58,7 @@
                     <select formControlName="product" class="form-control">
             <option value="">Select Product</option>
             <option *ngFor="let product of products" [value]="product.id">
-              {{ product.name }} - ${{ product.price }} ({{ product.size }})
+              {{ product.name }} - ₵{{ product.price }} ({{ product.size }})
             </option>
           </select>
                     <div *ngIf="orderForm.get('product')?.invalid && orderForm.get('product')?.touched" class="text-danger">
@@ -199,11 +199,11 @@
                     <div class="metric-label">Total Orders</div>
                 </div>
                 <div class="metric-card" data-aos="fade-left" data-aos-delay="500">
-                    <div class="metric-value">GH{{ (metrics.totalReceipts || 0) | number:'1.2-2' }}</div>
+                    <div class="metric-value">₵{{ (metrics.totalReceipts || 0) | number:'1.2-2' }}</div>
                     <div class="metric-label">Total Receipts</div>
                 </div>
                 <div class="metric-card" data-aos="fade-right" data-aos-delay="500">
-                    <div class="metric-value">GH{{ (metrics.totalExpectedValue || 0) | number:'1.2-2' }}</div>
+                    <div class="metric-value">₵{{ (metrics.totalExpectedValue || 0) | number:'1.2-2' }}</div>
                     <div class="metric-label">Expected Order Value</div>
                 </div>
                 <div class="metric-card" data-aos="fade-left" data-aos-delay="500">
