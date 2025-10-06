@@ -54,6 +54,13 @@ export class AuthService {
   }
 
 
+
+
+isAnniversaryOfficer(): boolean {
+  const user = this.getUser();
+  return user ? user.isAnniversary : false;
+}
+
   getUserId(): number | null {
     const user = localStorage.getItem('currentUser');
     if (user) {

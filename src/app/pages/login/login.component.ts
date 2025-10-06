@@ -76,12 +76,9 @@ onSubmit() {
   // console.log(username, password)
 
   this.authService.login(username.trim(), password.trim()).subscribe({
-
-    
-
     next: (response) => {
 
-    console.log('Login response:', response);  // <-- move log here
+    //console.log('Login response:', response);  // <-- move log here
 
       // Save user data
       localStorage.setItem('token', response.token);
@@ -93,23 +90,33 @@ onSubmit() {
         username: response.ussername,
         department: response.department,
         isLocal: response.isLocal,
-        isDistrict: response.isDistrict
+        isDistrict: response.isDistrict,
+        isAnniversary:response.isAnniversary
         
        
       }));
 
-      //console.log(localStorage)
+     // console.log(localStorage)
 
-      // Use iziToast for success notification (more prominent)
-      this.notification.success(
-        'Login Successful', 
-        // `Welcome back, ${response.employee_name || response.username}!`
-      );
-
-      
+   
 
       // Dynamic Routing Based on Role
-     this.router.navigate(['/homepage']);
+     //this.router.navigate(['/homepage']);
+       
+          if (this.authService.isAnniversaryOfficer()) {
+           console.log("printing....1")
+          this.router.navigate(['/anniversary']);
+        } else {
+           console.log("printing....2")
+          this.router.navigate(['/homepage']);
+        }
+
+           // Use iziToast for success notification (more prominent)
+          this.notification.success(
+            'Login Successful', 
+            // `Welcome back, ${response.employee_name || response.username}!`
+          );
+        
     },
     error: (err) => { 
       this.errorMessage = err.error?.non_field_errors?.[0] || 'Invalid username or password';

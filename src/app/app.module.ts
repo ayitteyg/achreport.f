@@ -38,6 +38,7 @@ import { DistDashboardComponent } from './pages/dist-dashboard/dist-dashboard.co
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { LocalDashboardComponent } from './pages/local-dashboard/local-dashboard.component';
 import { ReportPageComponent } from './pages/report-page/report-page.component';
+import { AnniversaryComponent } from './pages/anniversary/anniversary.component';
 
 
 
@@ -74,6 +75,7 @@ const circleProgressConfig = NgCircleProgressModule.forRoot({
     DistDashboardComponent,
     LocalDashboardComponent,
     ReportPageComponent,
+    AnniversaryComponent,
   ],
   imports: [
     BrowserModule,
